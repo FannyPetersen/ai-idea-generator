@@ -1,16 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
+import { InferenceClient } from "@huggingface/inference";
+
+const client = new InferenceClient(process.env.HUGGINGFACE_API_KEY);
 
 export async function POST(req: NextRequest) {
-  const { prompt } = await req.json();
+  try {
+    const { prompt } = await req.json();
 
-  if (!prompt) {
-    return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
+    if (!prompt) {
+      return NextResponse.json(
+        { error: "No prompt provided" },
+        { status: 400 }
+      );
+    }
+
+    const chatCompletion = await client.chatCompletion({
+      provider: "novita",
+      model: "deepseek-ai/DeepSeek-R1",
+      messages: [
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+    });
+
+    return NextResponse.json({
+      idea: chatCompletion.choices[0].message.content,
+    });
+  } catch (error) {
+    console.error("Hugging Face API error:", error);
+    return NextResponse.json(
+      { error: "Failed to generate idea" },
+      { status: 500 }
+    );
   }
-
-  // MOCKED response
-  const idea = `Here is a great AI-generated content idea based on your prompt: "${prompt}"`;
-
-  // Send back mocked response
-  return NextResponse.json({ idea });
 }
-
