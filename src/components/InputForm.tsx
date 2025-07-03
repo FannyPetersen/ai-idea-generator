@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import ToneRadioGroup from "./ToneRadioGroup";
+import ContextRadioGroup from "./ContextRadioGroup";
 
 const InputForm = ({
   onSubmit,
 }: {
-  onSubmit?: (prompt: string, tone: string) => void;
+  onSubmit?: (prompt: string, tone: string, context: string) => void;
 }) => {
   const [prompt, setPrompt] = useState("");
   const [tone, setTone] = useState("funny");
+  const [context, setContext] = useState("date");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (prompt.trim() && onSubmit) {
-      onSubmit(prompt, tone);
+      onSubmit(prompt, tone, context);
     }
     setPrompt("");
   };
@@ -20,6 +22,7 @@ const InputForm = ({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-start">
       <ToneRadioGroup value={tone} onChange={setTone} />
+      <ContextRadioGroup value={context} onChange={setContext} />
       <div className="flex gap-2 items-center w-full">
         <input
           type="text"
