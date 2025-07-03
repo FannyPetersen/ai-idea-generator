@@ -6,7 +6,16 @@ import InputForm from "@/components/InputForm";
 export default function Home() {
   const [icebreaker, setIcebreaker] = useState("");
 
-  const generateIcebreaker = async (prompt: string) => {
+  const generateIcebreaker = async (
+    tone: string,
+    context: string,
+    topic?: string
+  ) => {
+    const prompt =
+      `Generate a ${tone} icebreaker for a ${context} situation.` +
+      (topic ? ` It should be related to ${topic}.` : "") +
+      ` Keep it short and engaging.`;
+
     const res = await fetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
