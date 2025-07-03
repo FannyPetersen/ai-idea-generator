@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import IdeaForm from "@/components/IdeaForm";
+import InputForm from "@/components/InputForm";
 
 export default function Home() {
-  const [idea, setIdea] = useState("");
+  const [icebreaker, setIcebreaker] = useState("");
 
-  const generateIdea = async (prompt: string) => {
+  const generateIcebreaker = async (prompt: string) => {
     const res = await fetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -15,17 +15,17 @@ export default function Home() {
 
     const data = await res.json();
     console.log("Response from API:", data);
-    setIdea(data.idea);
+    setIcebreaker(data.icebreaker);
   };
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6 pt-24">
-      <h1 className="text-2xl font-bold">AI Idea Generator</h1>
-      <IdeaForm onSubmit={generateIdea} />
-      {idea && (
+      <h1 className="text-2xl font-bold">AI-powered Icebreaker Generator</h1>
+      <InputForm onSubmit={generateIcebreaker} />
+      {icebreaker && (
         <div className="mt-6 p-4 bg-green-100 rounded">
-          <h2 className="font-semibold mb-2">Your AI-generated idea:</h2>
-          <p>{idea}</p>
+          <h2 className="font-semibold mb-2">Your AI-generated icebreaker:</h2>
+          <p>{icebreaker}</p>
         </div>
       )}
     </main>

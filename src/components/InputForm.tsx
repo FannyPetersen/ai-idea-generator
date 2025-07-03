@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ToneRadioGroup from "./ToneRadioGroup";
 
-const IdeaForm = ({
+const InputForm = ({
   onSubmit,
 }: {
   onSubmit?: (prompt: string, tone: string) => void;
@@ -25,7 +25,7 @@ const IdeaForm = ({
           type="text"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Ask anything"
+          placeholder="Optional: Topic or theme"
           className="border rounded px-3 py-2 flex-1"
         />
         <button
@@ -39,4 +39,4 @@ const IdeaForm = ({
   );
 };
 
-export default IdeaForm;
+export default InputForm;

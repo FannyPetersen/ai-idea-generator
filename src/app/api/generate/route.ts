@@ -26,12 +26,12 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({
-      idea: chatCompletion.choices[0].message.content,
+      icebreaker: chatCompletion.choices[0].message.content,
     });
   } catch (error) {
     console.error("Hugging Face API error:", error);
     return NextResponse.json(
-      { error: "Failed to generate idea" },
+      { error: "Failed to generate icebreaker" },
       { status: 500 }
     );
   }
