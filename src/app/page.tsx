@@ -5,12 +5,14 @@ import InputForm from "@/components/InputForm";
 
 export default function Home() {
   const [icebreaker, setIcebreaker] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const generateIcebreaker = async (
     tone: string,
     context: string,
     topic?: string
   ) => {
+    setLoading(true);
     const prompt =
       `Generate a ${tone} icebreaker for a ${context} situation.` +
       (topic ? ` It should be related to ${topic}.` : "") +
@@ -23,19 +25,22 @@ export default function Home() {
     });
 
     const data = await res.json();
-    console.log("Response from API:", data);
     setIcebreaker(data.icebreaker);
+    setLoading(false);
   };
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6 pt-24">
       <h1 className="text-2xl font-bold">AI-powered Icebreaker Generator</h1>
       <InputForm onSubmit={generateIcebreaker} />
-      {icebreaker && (
-        <div className="mt-6 p-4 bg-green-100 rounded">
-          <h2 className="font-semibold mb-2">Your AI-generated icebreaker:</h2>
-          <p>{icebreaker}</p>
+      {loading && (
+        <div className="flex items-center gap-2 mt-4">
+          <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-600"></span>
+          <span>Generating...</span>
         </div>
+      )}
+      {icebreaker && !loading && (
+        <div className="mt-4 p-4 border rounded bg-gray-50">{icebreaker}</div>
       )}
     </main>
   );
