@@ -1,17 +1,15 @@
 import React from "react";
 
-const tones = [
-  { value: "funny", label: "Funny" },
-  { value: "formal", label: "Formal" },
-  { value: "relaxed", label: "Relaxed" },
-];
+type Tone = { value: string; label: string };
 
 export default function ToneRadioGroup({
   value,
   onChange,
+  tones,
 }: {
   value: string;
   onChange: (value: string) => void;
+  tones: Tone[];
 }) {
   return (
     <div className="flex items-center gap-4">
