@@ -20,11 +20,11 @@ const contextToTones: Record<string, { value: string; label: string }[]> = {
     { value: "quirky", label: "Quirky" },
   ],
   "job-interview": [
-    { value: "professional", label: "Professional" },
-    { value: "formal", label: "Formal" },
     { value: "friendly", label: "Friendly" },
     { value: "relaxed", label: "Relaxed" },
     { value: "inspiring", label: "Inspiring" },
+    { value: "formal", label: "Formal" },
+    { value: "professional", label: "Professional" },
   ],
 };
 
@@ -58,7 +58,7 @@ const InputForm = ({
       <ToneRadioGroup
         value={tone}
         onChange={setTone}
-        tones={contextToTones[context]}
+        availableTones={contextToTones[context].map((t) => t.value)}
       />
       <div className="flex gap-2 items-center w-96 mx-auto">
         <input
