@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ToneRadioGroup from "./ToneRadioGroup";
 import ContextRadioGroup from "./ContextRadioGroup";
 
@@ -34,12 +34,16 @@ const InputForm = ({
   onSubmit?: (tone: string, context: string, topic?: string) => void;
 }) => {
   const [context, setContext] = useState("date");
-  const [tone, setTone] = useState("funny");
+  const [tone, setTone] = useState(contextToTones["date"][0].value);
   const [topic, setTopic] = useState("");
+  const prevContext = useRef(context);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const availableTones = contextToTones[context];
-    if (!availableTones.find((t) => t.value === tone)) {
+    if (prevContext.current !== context) {
+      setTone(availableTones[0].value);
+      prevContext.current = context;
+    } else if (!availableTones.find((t) => t.value === tone)) {
       setTone(availableTones[0].value);
     }
   }, [context, tone]);
