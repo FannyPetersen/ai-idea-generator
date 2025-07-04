@@ -53,7 +53,7 @@ const InputForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-start">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center">
       <ContextRadioGroup value={context} onChange={setContext} />
       <ToneRadioGroup
         value={tone}
