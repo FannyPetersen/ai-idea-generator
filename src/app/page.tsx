@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start gap-6 pt-24">
+    <main className="min-h-screen flex flex-col items-center justify-start gap-6 pt-50">
       <h1 className="text-2xl font-bold">AI-powered Icebreaker Generator</h1>
       <InputForm onSubmit={generateIcebreaker} />
       {loading && (
@@ -40,7 +40,9 @@ export default function Home() {
         </div>
       )}
       {icebreaker && !loading && (
-        <div className="mt-4 p-4 border rounded bg-gray-50">{icebreaker}</div>
+        <div className="mt-4 p-4 border rounded bg-gray-50 w-1/2 text-center">
+          {icebreaker}
+        </div>
       )}
     </main>
   );
