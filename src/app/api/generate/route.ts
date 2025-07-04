@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     const chatCompletion = await client.chatCompletion({
       provider: "novita",
-      model: "deepseek-ai/DeepSeek-R1",
+      model: "deepseek-ai/DeepSeek-V3",
       messages: [
         {
           role: "user",
