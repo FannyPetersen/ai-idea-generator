@@ -16,7 +16,7 @@ export default function Home() {
     const prompt =
       `Generate a ${tone} icebreaker for a ${context} situation.` +
       (topic ? ` It should be related to ${topic}.` : "") +
-      ` Keep it short and engaging.`;
+      ` Keep it short and engaging. Don't end with a question. Only the icebreaker, no introduction or extra phrases."`;
 
     const res = await fetch("/api/generate", {
       method: "POST",
