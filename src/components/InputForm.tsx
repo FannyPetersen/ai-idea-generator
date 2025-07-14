@@ -64,20 +64,23 @@ const InputForm = ({
         onChange={setTone}
         availableTones={contextToTones[context].map((t) => t.value)}
       />
-      <div className="flex gap-2 items-center w-96 mx-auto">
-        <input
-          type="text"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-          placeholder="Optional: Topic or theme"
-          className="border rounded px-3 py-2 flex-1"
-        />
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Generate
-        </button>
+      <div className="flex flex-col items-center w-96 mx-auto">
+        <span className="font-medium mb-2">Topic or theme (optional):</span>
+        <div className="flex gap-2 items-center w-full">
+          <input
+            type="text"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            placeholder="e.g. remote work, first date, dogs"
+            className="border rounded px-3 py-2 flex-1"
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Generate
+          </button>
+        </div>
       </div>
     </form>
   );

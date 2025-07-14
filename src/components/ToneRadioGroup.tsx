@@ -21,8 +21,9 @@ export default function ToneRadioGroup({
   availableTones: string[];
 }) {
   return (
-    <div className="flex items-center gap-4">
-      <span className="font-medium">Tone:</span>
+    <div className="flex flex-col items-center">
+      <span className="font-medium mb-2">Tone:</span>
+      <div className="flex flex-wrap gap-x-4 gap-y-2 w-[25rem]">
       {ALL_TONES.map((tone) => {
         const isAvailable = availableTones.includes(tone.value);
         return (
@@ -44,6 +45,7 @@ export default function ToneRadioGroup({
           </label>
         );
       })}
+      </div>
     </div>
   );
 }
