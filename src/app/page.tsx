@@ -30,17 +30,17 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-rose-100">
-      <div className="w-full max-w-xl bg-white rounded-xl shadow-lg p-8 flex flex-col items-center gap-6">
-        <span className="text-4xl mb-2">💡</span>
-        <h1 className="text-3xl font-bold text-rose-700 mb-2 text-center">
-          AI-powered Icebreaker Generator
+    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-pink-100">
+      <div className="flex flex-col md:flex-row items-start gap-8 w-full max-w-4xl">
+        <div className="w-full md:w-1/2 max-w-xl bg-white rounded-xl shadow-lg p-8 flex flex-col items-center gap-6 mx-auto">
+          <h1 className="text-3xl font-bold text-pink-700 mb-2 text-center">
+            💡 AI-powered Icebreaker Generator
         </h1>
         <InputForm onSubmit={generateIcebreaker} />
         {loading && (
           <div className="flex items-center gap-2 mt-4">
-            <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-rose-600"></span>
-            <span className="text-rose-600 font-medium">Generating...</span>
+              <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-pink-600"></span>
+              <span className="text-pink-600 font-medium">Generating...</span>
           </div>
         )}
         {icebreaker && !loading && (
