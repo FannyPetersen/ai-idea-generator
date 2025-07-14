@@ -30,20 +30,25 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start gap-6 pt-50">
-      <h1 className="text-2xl font-bold">AI-powered Icebreaker Generator</h1>
-      <InputForm onSubmit={generateIcebreaker} />
-      {loading && (
-        <div className="flex items-center gap-2 mt-4">
-          <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-600"></span>
-          <span>Generating...</span>
-        </div>
-      )}
-      {icebreaker && !loading && (
-        <div className="mt-4 p-4 border rounded bg-gray-50 w-1/2 text-center">
-          {icebreaker}
-        </div>
-      )}
+    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-rose-100">
+      <div className="w-full max-w-xl bg-white rounded-xl shadow-lg p-8 flex flex-col items-center gap-6">
+        <span className="text-4xl mb-2">💡</span>
+        <h1 className="text-3xl font-bold text-rose-700 mb-2 text-center">
+          AI-powered Icebreaker Generator
+        </h1>
+        <InputForm onSubmit={generateIcebreaker} />
+        {loading && (
+          <div className="flex items-center gap-2 mt-4">
+            <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-rose-600"></span>
+            <span className="text-rose-600 font-medium">Generating...</span>
+          </div>
+        )}
+        {icebreaker && !loading && (
+          <div className="mt-4 p-4 border rounded bg-rose-50 text-rose-900 max-w-md w-full text-center shadow">
+            {icebreaker}
+          </div>
+        )}
+      </div>
     </main>
   );
 }

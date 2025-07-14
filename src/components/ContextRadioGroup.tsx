@@ -15,7 +15,7 @@ export default function ContextRadioGroup({
 }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="font-medium mb-2">Context:</span>
+      <span className="font-bold mb-2">Context:</span>
       <div className="flex gap-x-4">
         {contexts.map((context) => (
           <label
@@ -28,7 +28,7 @@ export default function ContextRadioGroup({
               value={context.value}
               checked={value === context.value}
               onChange={() => onChange(context.value)}
-              className="accent-blue-600"
+              className="accent-pink-600"
             />
             {context.label}
           </label>

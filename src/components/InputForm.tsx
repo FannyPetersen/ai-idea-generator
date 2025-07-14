@@ -57,7 +57,7 @@ const InputForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-8 items-center">
       <ContextRadioGroup value={context} onChange={setContext} />
       <ToneRadioGroup
         value={tone}
@@ -65,18 +65,18 @@ const InputForm = ({
         availableTones={contextToTones[context].map((t) => t.value)}
       />
       <div className="flex flex-col items-center w-96 mx-auto">
-        <span className="font-medium mb-2">Topic or theme (optional):</span>
+        <span className="font-bold mb-2">Topic or theme (optional):</span>
         <div className="flex gap-2 items-center w-full">
           <input
             type="text"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             placeholder="e.g. remote work, first date, dogs"
-            className="border rounded px-3 py-2 flex-1"
+            className="border rounded px-3 py-2 flex-1 focus:border-pink-600 focus:ring-pink-300 focus:ring-2 focus:outline-none"
           />
           <button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700"
           >
             Generate
           </button>

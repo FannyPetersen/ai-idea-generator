@@ -22,7 +22,7 @@ export default function ToneRadioGroup({
 }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="font-medium mb-2">Tone:</span>
+      <span className="font-bold mb-2">Tone:</span>
       <div className="flex flex-wrap gap-x-4 gap-y-2 w-[25rem]">
         {ALL_TONES.map((tone) => {
           const isAvailable = availableTones.includes(tone.value);
@@ -39,7 +39,7 @@ export default function ToneRadioGroup({
                 value={tone.value}
                 checked={value === tone.value}
                 onChange={() => isAvailable && onChange(tone.value)}
-                className="accent-blue-600"
+                className="accent-pink-600"
                 disabled={!isAvailable}
               />
               {tone.label}
