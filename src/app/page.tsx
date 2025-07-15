@@ -38,14 +38,10 @@ export default function Home() {
             💡 AI-powered Icebreaker Generator
           </h1>
           <InputForm onSubmit={generateIcebreaker} />
-          {loading && (
-            <div className="flex items-center gap-2 mt-4">
-              <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-pink-600"></span>
-              <span className="text-pink-600 font-medium">Generating...</span>
-            </div>
-          )}
         </div>
-        {icebreaker && !loading && <OutputCard icebreaker={icebreaker} />}
+        {(icebreaker || loading) && (
+          <OutputCard icebreaker={icebreaker} loading={loading} />
+        )}
       </div>
     </main>
   );
